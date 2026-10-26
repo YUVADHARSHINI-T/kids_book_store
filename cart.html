@@ -1,0 +1,439 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Kids Book Store</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff8f0;
+            color: #444;
+        }
+
+        header {
+            background: #ffb6a3;
+            padding: 24px 15px;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #713f32;
+            margin: 0;
+        }
+
+        header p {
+            color: #713f32;
+        }
+
+        nav {
+            margin-top: 18px;
+        }
+
+        nav a {
+            display: inline-block;
+            color: #713f32;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 8px 12px;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 35px auto;
+            padding: 15px;
+        }
+
+        .page-title {
+            text-align: center;
+            color: #d66b56;
+            margin-bottom: 10px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #777;
+        }
+
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .cart-box, .summary-box {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+        }
+
+        .cart-box h2, .summary-box h2 {
+            color: #713f32;
+            margin-top: 0;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 18px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .book-cover {
+            width: 95px;
+            height: 120px;
+            object-fit: contain;
+            background: #fff0e8;
+            border-radius: 8px;
+        }
+
+        .book-info {
+            flex: 1;
+        }
+
+        .book-info h3 {
+            color: #713f32;
+            margin: 0 0 8px;
+        }
+
+        .price {
+            color: #d66b56;
+            font-weight: bold;
+            margin: 8px 0;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .quantity-control button {
+            width: 30px;
+            height: 30px;
+            border: none;
+            background: #ffe0d5;
+            color: #713f32;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+
+        .remove-btn {
+            border: none;
+            background: none;
+            color: #c44f43;
+            cursor: pointer;
+            margin-top: 10px;
+            padding: 0;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 18px 0;
+        }
+
+        .summary-total {
+            border-top: 1px solid #eee;
+            padding-top: 18px;
+            font-size: 19px;
+            font-weight: bold;
+            color: #713f32;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 7px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+
+        .checkout-btn {
+            background: #d66b56;
+            color: white;
+        }
+
+        .checkout-btn:hover {
+            background: #b95140;
+        }
+
+        .continue-btn {
+            background: #ffe0d5;
+            color: #713f32;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 35px 10px;
+        }
+
+        .empty-cart h3 {
+            color: #713f32;
+        }
+
+        footer {
+            background: #ffb6a3;
+            color: #713f32;
+            text-align: center;
+            padding: 18px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 750px) {
+            .cart-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-item {
+                align-items: flex-start;
+            }
+
+            .book-cover {
+                width: 75px;
+                height: 100px;
+            }
+
+            .cart-box, .summary-box {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Kids Book Store</h1>
+    <p>A Little Book, A Big Adventure!</p>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="help.html">Help</a>
+        <a href="cart.html">Cart</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Signup</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <h1 class="page-title">My Shopping Cart</h1>
+    <p class="intro">Your little reader's next adventure starts here!</p>
+
+    <div class="cart-layout">
+
+        <section class="cart-box">
+            <h2>Cart Items</h2>
+            <div id="cart-items"></div>
+        </section>
+
+        <aside class="summary-box">
+            <h2>Order Summary</h2>
+
+            <div class="summary-row">
+                <span>Items</span>
+                <span id="item-count">0</span>
+            </div>
+
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="subtotal">₹0.00</span>
+            </div>
+
+            <div class="summary-row">
+                <span>Delivery</span>
+                <span>Free</span>
+            </div>
+
+            <div class="summary-row summary-total">
+                <span>Total</span>
+                <span id="total">₹0.00</span>
+            </div>
+
+            <button class="btn checkout-btn" onclick="checkout()">
+                Proceed to Checkout
+            </button>
+
+            <a class="btn continue-btn" href="index.html">
+                Continue Shopping
+            </a>
+        </aside>
+
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2026 Kids Book Store. All rights reserved.</p>
+    <p>Making Reading Fun for Every Child!</p>
+</footer>
+
+<script>
+    const sampleBooks = [
+        {
+            name: "Shady Baby Feels",
+            price: 10,
+            image: "https://www.harpercollins.com/cdn/shop/files/9780063054042_f0591393-c019-44e2-92dc-9d43a1071171.jpg?v=1772581125&width=360"
+        },
+        {
+            name: "A Good Thing Happened Today",
+            price: 12,
+            image: "https://www.harpercollins.com/cdn/shop/files/9780063142312.jpg?v=1769341964&width=360"
+        },
+        {
+            name: "Little Bat Up All Day",
+            price: 8,
+            image: "https://www.harpercollins.com/cdn/shop/files/9780358269854_52408b19-cbbf-4cd3-abed-5661627f9ce1.jpg?v=1764879508&width=360"
+        }
+    ];
+
+    function getCart() {
+        try {
+            return JSON.parse(localStorage.getItem("cart")) || [];
+        } catch (error) {
+            return [];
+        }
+    }
+
+    function saveCart(cart) {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }
+
+    function renderCart() {
+        const cart = getCart();
+        const cartItems = document.getElementById("cart-items");
+
+        cartItems.innerHTML = "";
+
+        if (cart.length === 0) {
+            cartItems.innerHTML = `
+                <div class="empty-cart">
+                    <h3>Your cart is empty!</h3>
+                    <p>Discover a wonderful book for your little reader.</p>
+                    <a class="btn continue-btn" href="index.html">
+                        Explore Books
+                    </a>
+                </div>
+            `;
+
+            updateSummary([]);
+            return;
+        }
+
+        cart.forEach((item, index) => {
+            const book = sampleBooks.find(b => b.name === item.name);
+            const image = book ? book.image : "";
+            const quantity = Math.max(1, Number(item.quantity) || 1);
+            const price = Number(item.price) || 0;
+
+            cartItems.innerHTML += `
+                <div class="cart-item">
+                    <img class="book-cover"
+                         src="${image}"
+                         alt="${item.name.replace(/&/g, "&amp;").replace(/"/g, "&quot;")}"
+                         onerror="this.style.display='none'">
+
+                    <div class="book-info">
+                        <h3>${item.name.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</h3>
+                        <p class="price">₹${price.toFixed(2)}</p>
+
+                        <div class="quantity-control">
+                            <button onclick="changeQuantity(${index}, -1)">−</button>
+                            <span>${quantity}</span>
+                            <button onclick="changeQuantity(${index}, 1)">+</button>
+                        </div>
+
+                        <button class="remove-btn"
+                                onclick="removeItem(${index})">
+                            Remove
+                        </button>
+                    </div>
+
+                    <strong>₹${(price * quantity).toFixed(2)}</strong>
+                </div>
+            `;
+        });
+
+        updateSummary(cart);
+    }
+
+    function updateSummary(cart) {
+        const count = cart.reduce(
+            (sum, item) => sum + Math.max(1, Number(item.quantity) || 1), 0
+        );
+
+        const total = cart.reduce(
+            (sum, item) => sum +
+                (Number(item.price) || 0) *
+                Math.max(1, Number(item.quantity) || 1), 0
+        );
+
+        document.getElementById("item-count").textContent = count;
+        document.getElementById("subtotal").textContent = "₹" + total.toFixed(2);
+        document.getElementById("total").textContent = "₹" + total.toFixed(2);
+    }
+
+    function changeQuantity(index, amount) {
+        const cart = getCart();
+        const currentQuantity = Math.max(1, Number(cart[index].quantity) || 1);
+        const nextQuantity = currentQuantity + amount;
+
+        if (nextQuantity < 1) {
+            return;
+        }
+
+        cart[index].quantity = nextQuantity;
+        saveCart(cart);
+        renderCart();
+    }
+
+    function removeItem(index) {
+        const cart = getCart();
+        cart.splice(index, 1);
+        saveCart(cart);
+        renderCart();
+    }
+
+    function checkout() {
+        const cart = getCart();
+
+        if (cart.length === 0) {
+            alert("Your cart is empty. Please add a book first.");
+            return;
+        }
+
+        alert("Please log in to continue with checkout.");
+        window.location.href = "login.html";
+    }
+
+    renderCart();
+</script>
+
+</body>
+</html>
+```

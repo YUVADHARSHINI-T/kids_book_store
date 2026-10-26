@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Book Store - Home</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .container > h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .books-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .book {
+            width: 280px;
+            padding: 18px;
+            background-color: #fff3e0;
+            border: 1px solid #ffe0b2;
+            border-radius: 14px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .book:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+        }
+
+        .book img {
+            width: 100%;
+            height: 270px;
+            object-fit: contain;
+            background-color: white;
+            border-radius: 8px;
+        }
+
+        .book h4 {
+            font-size: 17px;
+            min-height: 48px;
+            margin: 14px 0 5px;
+            color: #39302a;
+        }
+
+        .book .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #d96b4b;
+            margin-bottom: 12px;
+        }
+
+        .book button {
+            width: 100%;
+            margin: 5px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 7px;
+            background-color: #ffa58f;
+            color: white;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .book button:hover {
+            background-color: #f17f67;
+        }
+
+        .book button.buy-button {
+            background-color: #ffcc80;
+            color: #49382b;
+        }
+
+        .book button.buy-button:hover {
+            background-color: #ffb74d;
+        }
+
+        .cart-section {
+            background-color: #ffe9cc;
+            padding: 25px;
+            margin-top: 40px;
+            border-radius: 14px;
+            border: 1px solid #ffdbad;
+        }
+
+        .cart-section h2 {
+            margin-bottom: 15px;
+            color: #49382b;
+        }
+
+        #cart-items {
+            padding-left: 22px;
+        }
+
+        #cart-items li {
+            margin: 12px 0;
+            overflow-wrap: anywhere;
+        }
+
+        #cart-items button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #e98068;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #cart-total {
+            margin-top: 18px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .go-cart-button {
+            margin-top: 12px;
+            padding: 10px 18px;
+            background-color: #ffa58f;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-family: inherit;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .books-container {
+                gap: 18px;
+            }
+
+            .book {
+                width: calc(50% - 12px);
+                min-width: 220px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .book {
+                width: 100%;
+                max-width: 320px;
+                min-width: 0;
+            }
+
+            .cart-section {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Fun Kids Book Store</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="cart.html">Cart</a>
+        <a href="contact.html">Hepl</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Signup</a>
+    </nav>
+
+    <main class="container">
+
+        <h2>Popular Books</h2>
+
+        <div class="books-container">
+
+            <div class="book">
+                <img
+                    src="https://www.harpercollins.com/cdn/shop/files/9780063054042_f0591393-c019-44e2-92dc-9d43a1071171.jpg?v=1772581125&width=360"
+                    alt="Shady Baby Feels book cover">
+
+                <h4>Shady Baby Feels</h4>
+                <p class="price">$10</p>
+
+                <button onclick="addToCart('Shady Baby Feels', 10)">
+                    Add to Cart
+                </button>
+
+                <button class="buy-button"
+                    onclick="buyNow('Shady Baby Feels', 10)">
+                    Buy Now
+                </button>
+            </div>
+
+            <div class="book">
+                <img
+                    src="https://www.harpercollins.com/cdn/shop/files/9780063142312.jpg?v=1769341964&width=360"
+                    alt="A Good Thing Happened Today book cover">
+
+                <h4>A Good Thing Happened Today</h4>
+                <p class="price">$12</p>
+
+                <button onclick="addToCart('A Good Thing Happened Today', 12)">
+                    Add to Cart
+                </button>
+
+                <button class="buy-button"
+                    onclick="buyNow('A Good Thing Happened Today', 12)">
+                    Buy Now
+                </button>
+            </div>
+
+            <div class="book">
+                <img
+                    src="https://www.harpercollins.com/cdn/shop/files/9780358269854_52408b19-cbbf-4cd3-abed-5661627f9ce1.jpg?v=1764879508&width=360"
+                    alt="Little Bat Up All Day book cover">
+
+                <h4>Little Bat Up All Day</h4>
+                <p class="price">$8</p>
+
+                <button onclick="addToCart('Little Bat Up All Day', 8)">
+                    Add to Cart
+                </button>
+
+                <button class="buy-button"
+                    onclick="buyNow('Little Bat Up All Day', 8)">
+                    Buy Now
+                </button>
+            </div>
+
+        </div>
+
+        <section class="cart-section">
+            <h2>Your Shopping Cart</h2>
+
+            <ul id="cart-items">
+                <li>No items in cart yet.</li>
+            </ul>
+
+            <p id="cart-total">Total: $0</p>
+
+            <button class="go-cart-button" onclick="goToCart()">
+                Go to Cart
+            </button>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kids Book Store</p>
+    </footer>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function isLoggedIn() {
+            return true;
+        }
+
+        function addToCart(name, price) {
+            if (!isLoggedIn()) {
+                alert('Please login to add items!');
+                window.location.href = 'login.php';
+                return;
+            }
+
+            cart.push({
+                name: name,
+                price: price
+            });
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        function buyNow(name, price) {
+            sessionStorage.setItem('buyBookName', name);
+            sessionStorage.setItem('buyBookPrice', price);
+            window.location.href = 'checkout.php';
+        }
+
+        function updateCartUI() {
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<li>No items in cart yet.</li>';
+                cartTotal.innerText = 'Total: $0';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                html += `<li>
+                    ${item.name} - $${item.price}
+                    <button onclick="removeFromCart(${index})">
+                        Remove
+                    </button>
+                </li>`;
+
+                total += Number(item.price);
+            });
+
+            cartItems.innerHTML = html;
+            cartTotal.innerText = `Total: $${total}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        function goToCart() {
+            if (cart.length === 0) {
+                alert('Cart is empty!');
+                return;
+            }
+
+            window.location.href = 'cart.php';
+        }
+
+        updateCartUI();
+    </script>
+
+</body>
+</html>

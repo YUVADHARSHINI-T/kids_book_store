@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Kids Book Store</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff8f0;
+            color: #444;
+        }
+
+        header {
+            background-color: #ffb6a3;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        header h1 {
+            color: #713f32;
+            margin: 0;
+            font-size: 32px;
+        }
+
+        header p {
+            color: #713f32;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            display: inline-block;
+            color: #713f32;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 8px 12px;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        .login-container {
+            max-width: 450px;
+            margin: 45px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-container h2 {
+            text-align: center;
+            color: #d66b56;
+            margin-bottom: 10px;
+        }
+
+        .welcome {
+            text-align: center;
+            color: #777;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #713f32;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #e3c9bf;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #d66b56;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            background-color: #d66b56;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #b95140;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 22px;
+        }
+
+        .signup-link a {
+            color: #d66b56;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 18px;
+        }
+
+        .back-link a {
+            color: #713f32;
+            text-decoration: none;
+        }
+
+        footer {
+            background-color: #ffb6a3;
+            color: #713f32;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 500px) {
+            .login-container {
+                margin: 25px 15px;
+                padding: 22px;
+            }
+
+            header h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Kids Book Store</h1>
+        <p>A Little Book, A Big Adventure!</p>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Help</a>
+            <a href="cart.html">Cart</a>
+            <a href="login.html">Login</a>
+            <a href="signup.html">Signup</a>
+        </nav>
+    </header>
+
+    <main class="login-container">
+
+        <h2>Welcome Back!</h2>
+
+        <p class="welcome">
+            Log in to your account and continue exploring
+            your favourite children's books.
+        </p>
+
+        <form action="login.php" method="POST">
+
+            <label for="username">Username or Email</label>
+            <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter your username or email"
+                required
+            >
+
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+            >
+
+            <button type="submit">Login</button>
+
+        </form>
+
+        <p class="signup-link">
+            Don't have an account?
+            <a href="signup.html">Create an Account</a>
+        </p>
+
+        <p class="back-link">
+            <a href="index.html">← Back to Home</a>
+        </p>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kids Book Store. All rights reserved.</p>
+        <p>Making Reading Fun for Every Child!</p>
+    </footer>
+
+</body>
+</html>

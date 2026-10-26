@@ -1,0 +1,161 @@
+
+body {
+    margin: 0;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background-color: #fff8f3;
+    color: #333;
+}
+
+header {
+    background-color: #ffcc80;
+    text-align: center;
+    padding: 20px;
+}
+
+nav {
+    background-color: #ffa58f;
+    padding: 12px;
+    text-align: center;
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 12px;
+    font-weight: bold;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+.book-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.book-card {
+    background: white;
+    border-radius: 12px;
+    padding: 18px;
+    width: 230px;
+    box-shadow: 0 2px 8px #00000015;
+}
+
+.book-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: contain;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+button {
+    background-color: #ffa58f;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #ffcc80;
+    text-align: center;
+    padding: 12px;
+    margin-top: 25px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Comic Sans MS", cursive;
+    background: #fff8f3;
+    color: #444;
+}
+
+header {
+    background: #ffcc80;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    background: #ffa58f;
+    padding: 14px;
+    text-align: center;
+}
+
+nav a {
+    display: inline-block;
+    margin: 5px 10px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #fff;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 25px auto;
+}
+
+button,
+.button {
+    display: inline-block;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #ffcc80;
+    color: #333;
+    font-family: inherit;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button:hover,
+.button:hover {
+    background: #ffb85c;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font: inherit;
+}
+
+footer {
+    margin-top: 35px;
+    padding: 18px;
+    text-align: center;
+    background: #ffcc80;
+}
+
+@media (max-width: 600px) {
+    nav a {
+        margin: 7px;
+    }
+
+    .container {
+        width: 95%;
+    }
+}
